@@ -26,8 +26,6 @@ hs_err_pid*
 /captures
 .externalNativeBuild
 
-gradle.properties
-
 # Built application files
 *.apk
 *.ap_
