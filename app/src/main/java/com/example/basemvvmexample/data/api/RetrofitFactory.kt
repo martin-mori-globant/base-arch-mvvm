@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitFactory {
-    const val BASE_URL = "https://dog.ceo/api/breeds/"
+    private const val BASE_URL = "https://dog.ceo/api/breeds/"
 
     fun getApiService(): ApiService {
         return Retrofit.Builder()
