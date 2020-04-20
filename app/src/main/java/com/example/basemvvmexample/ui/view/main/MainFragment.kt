@@ -25,16 +25,15 @@ class MainFragment : Fragment() {
     private lateinit var mainFragmentBinding: MainFragmentBinding
     private lateinit var getDogImageObserver: Observer<Resource<Response<DogImage>>>
 
-
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
 
         val factory = MainViewModel.Factory(ApiHelper(RetrofitFactory.getApiService()))
         mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false).apply {
-            mainViewModel =
-                    ViewModelProvider(this@MainFragment, factory).get(MainViewModel::class.java)
+            mainViewModel = ViewModelProvider(this@MainFragment, factory).get(MainViewModel::class.java)
             lifecycleOwner = viewLifecycleOwner
         }
 
@@ -63,17 +62,16 @@ class MainFragment : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        //Do something if success
+                        // Do something if success
                     }
                     Status.ERROR -> {
-                        //Do something if error
+                        // Do something if error
                     }
                     Status.LOADING -> {
-                        //Do something if loading
+                        // Do something if loading
                     }
                 }
             }
         }
     }
-
 }
