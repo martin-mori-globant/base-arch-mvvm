@@ -26,7 +26,6 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
         }
     }
 
-
     class Factory(private val apiHelper: ApiHelper) : ViewModelProvider.Factory {
 
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -36,5 +35,4 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
             throw IllegalArgumentException("Unknown class name")
         }
     }
-
 }
