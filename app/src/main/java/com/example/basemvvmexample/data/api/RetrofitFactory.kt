@@ -10,6 +10,7 @@ object RetrofitFactory {
         return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
-                .build().create(ApiService::class.java)
+                .build()
+                .create(ApiService::class.java)
     }
 }
