@@ -46,8 +46,7 @@ class MainFragment : Fragment() {
         initializeUI()
 
         mainFragmentBinding.btnNext.setOnClickListener {
-            mainFragmentBinding.mainViewModel?.getDogImage()
-                    ?.observe(viewLifecycleOwner, getDogImageResponseObserver)
+            mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageResponseObserver)
         }
 
         mainFragmentBinding.btnBreeds.setOnClickListener {
@@ -57,8 +56,7 @@ class MainFragment : Fragment() {
     }
 
     private fun initializeUI() {
-        mainFragmentBinding.mainViewModel?.getDogImage()
-                ?.observe(viewLifecycleOwner, getDogImageResponseObserver)
+        mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageResponseObserver)
     }
 
     private fun setUpObservers() {
@@ -83,7 +81,7 @@ class MainFragment : Fragment() {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         val list = resource.data?.body()?.message?.keys?.toList()
-                        mainFragmentBinding.mainViewModel.saveThatShit(list)
+                        mainFragmentBinding.mainViewModel?.saveThatShit(list)
                     }
                     Status.ERROR -> {
                         // Do something if error

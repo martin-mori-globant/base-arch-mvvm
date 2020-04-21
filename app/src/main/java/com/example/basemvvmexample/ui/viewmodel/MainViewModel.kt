@@ -7,8 +7,8 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.basemvvmexample.data.api.ApiHelper
 import com.example.basemvvmexample.data.api.RetrofitFactory
-import com.example.basemvvmexample.data.local.DogsRoomDatabase
 import com.example.basemvvmexample.data.api.response.Resource
+import com.example.basemvvmexample.data.local.DogsRoomDatabase
 import com.example.basemvvmexample.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

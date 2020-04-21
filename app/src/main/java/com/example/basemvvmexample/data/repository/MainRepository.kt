@@ -2,9 +2,9 @@ package com.example.basemvvmexample.data.repository
 
 import androidx.annotation.WorkerThread
 import com.example.basemvvmexample.data.api.ApiHelper
-import com.example.basemvvmexample.data.local.BreedRoom
-import com.example.basemvvmexample.data.local.BreedDao
 import com.example.basemvvmexample.data.api.response.DogBreedResponse
+import com.example.basemvvmexample.data.local.BreedDao
+import com.example.basemvvmexample.data.local.BreedRoom
 import retrofit2.Response
 
 class MainRepository(private val apiHelper: ApiHelper, private val breedDao: BreedDao) {
