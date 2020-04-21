@@ -17,19 +17,11 @@ import retrofit2.Response
 
 class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private lateinit var mainFragmentBinding: MainFragmentBinding
     private lateinit var getDogImageResponseObserver: Observer<Resource<Response<DogImageResponse>>>
     private lateinit var getDogBreedsObserverResponse: Observer<Resource<Response<DogBreedResponse>>>
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 
         mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false).apply {
             mainViewModel = ViewModelProvider(this@MainFragment).get(MainViewModel::class.java)

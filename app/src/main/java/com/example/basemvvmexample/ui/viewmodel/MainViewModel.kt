@@ -25,7 +25,8 @@ class MainViewModel(application: Application) : BaseViewModel() {
     init {
         val breedDao = DogsRoomDatabase.getDatabase(application).breedDao()
         val apiHelper = ApiHelper(RetrofitFactory.getApiService())
-        mainRepository = MainRepository(apiHelper, breedDao)
+        // mainRepository = MainRepository(apiHelper, breedDao)
+        mainRepository = MainRepository(apiHelper)
     }
 
     fun getDogImage() = liveData(Dispatchers.IO) {
