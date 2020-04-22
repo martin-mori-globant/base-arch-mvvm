@@ -13,7 +13,7 @@ class MainRepository(private val apiHelper: ApiHelper, private val breedDao: Bre
     val breeds: LiveData<List<BreedRoom>> = breedDao.getBreedsAlphabeticOrder()
 
     suspend fun getDogImage() = apiHelper.getDogImage()
-    suspend fun getDogBreeds(): Response<DogBreedResponse> = apiHelper.getDogBreeds()
+    suspend fun getDogBreeds(): Response<DogBreedResponse> = apiHelper.getDogBreedsApiCall()
 
     @WorkerThread
     suspend fun insert(breeds: List<BreedRoom>) {

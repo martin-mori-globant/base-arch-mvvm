@@ -29,22 +29,43 @@ class BreedViewModel(private val mainRepository: MainRepository) : BaseViewModel
             val dogBreedsResponse = mainRepository.getDogBreeds()
             val breedsRoomList = dogBreedsResponse.body()?.message?.keys?.toList()?.map { it -> BreedRoom(it) }
             _dogBreedsLiveData.postValue(breedsRoomList)
-            // saveOnDatabase(list)
+            saveOnDatabase(breedsRoomList)
             emit(Resource.success(data = dogBreedsResponse))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 
-    fun saveOnDatabase(list: List<String>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            mainRepository.insert(list.map { BreedRoom(it) })
+    fun getDogBreedsFromRepo() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            if (dogBreedsLiveData.value.isNullOrEmpty()) {
+                val dogBreedsResponse = mainRepository.getDogBreeds()
+                val breedsRoomList = dogBreedsResponse.body()?.message?.keys?.toList()?.map { it -> BreedRoom(it) }
+                _dogBreedsLiveData.postValue(breedsRoomList)
+                saveOnDatabase(breedsRoomList)
+                emit(Resource.success(data = dogBreedsResponse))
+            }
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 
-    fun loadOnDataBase() {
+    private fun saveOnDatabase(list: List<BreedRoom>?) {
         viewModelScope.launch(Dispatchers.IO) {
-            mainRepository.loadBreeds()
+            list?.let { mainRepository.insert(it) }
+        }
+    }
+
+    fun saveOnDatabase2(list: List<BreedRoom>) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            viewModelScope.launch(Dispatchers.IO) {
+                mainRepository.insert(list)
+                emit(Resource.success(dogBreedsLiveData))
+            }
+        } catch (exception: java.lang.Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
     }
 

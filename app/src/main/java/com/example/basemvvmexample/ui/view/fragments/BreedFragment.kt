@@ -59,8 +59,15 @@ class BreedFragment : Fragment() {
         }
 
         breed_fragment_search.setOnClickListener {
-            breedFragmentBinding.breedViewModel?.getDogBreedsFromApi()?.observe(viewLifecycleOwner, getDogBreedsObserverResponse)
+            breedFragmentBinding.breedViewModel?.getDogBreedsFromRepo()?.observe(viewLifecycleOwner, getDogBreedsObserverResponse)
         }
+
+        /*
+        breed_fragment_load.setOnClickListener {
+            breedFragmentBinding.breedViewModel?.loadOnDataBase()?.observe(viewLifecycleOwner, getDogBreedsObserverResponse)
+        }
+
+         */
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -76,13 +83,9 @@ class BreedFragment : Fragment() {
         recyclerViewAdapter = BreedRecyclerViewAdapter(emptyList(), sharedViewModel)
         breed_fragment_recycler_view.adapter = recyclerViewAdapter
         breed_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
-        breedFragmentBinding.breedViewModel?.dogBreedsLiveData?.observe(viewLifecycleOwner, Observer { words ->
-            words?.let { recyclerViewAdapter.setWords(it) }
+        breedFragmentBinding.breedViewModel?.dogBreedsLiveData?.observe(viewLifecycleOwner, Observer { breeds ->
+            breeds?.let { recyclerViewAdapter.setWords(breeds) }
         })
-    }
-
-    private fun initializeUI() {
-        breedFragmentBinding.breedViewModel?.getDogBreedsFromApi()?.observe(viewLifecycleOwner, getDogBreedsObserverResponse)
     }
 
     private fun setUpObservers() {
@@ -90,14 +93,10 @@ class BreedFragment : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        val list = resource.data?.body()?.message?.keys?.toList()
-                        list?.let {
-                            breedFragmentBinding.breedViewModel?.saveOnDatabase(list)
-                        }
                         hideLoading()
                     }
                     Status.ERROR -> {
-                        // Do something if error
+                        hideLoading()
                     }
                     Status.LOADING -> {
                         showLoading()
