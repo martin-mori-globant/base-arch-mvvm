@@ -61,3 +61,5 @@ dependencies {
     // Room
     implementation 'androidx.room:room-runtime:' + rootProject.room_version
 }
+
+apply from: '../buildsystem/lint.gradle'
