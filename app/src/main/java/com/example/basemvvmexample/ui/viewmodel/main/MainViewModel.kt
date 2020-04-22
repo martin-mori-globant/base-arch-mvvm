@@ -1,4 +1,4 @@
-package com.example.basemvvmexample.ui.viewmodel
+package com.example.basemvvmexample.ui.viewmodel.main
 
 import android.app.Application
 import androidx.lifecycle.LiveData
@@ -9,6 +9,7 @@ import com.example.basemvvmexample.data.api.ApiHelper
 import com.example.basemvvmexample.data.api.RetrofitFactory
 import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.local.DogsRoomDatabase
+import com.example.basemvvmexample.ui.viewmodel.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

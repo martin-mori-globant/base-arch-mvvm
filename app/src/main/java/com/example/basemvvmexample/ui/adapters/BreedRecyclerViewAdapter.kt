@@ -1,4 +1,4 @@
-package com.example.basemvvmexample.ui
+package com.example.basemvvmexample.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.View

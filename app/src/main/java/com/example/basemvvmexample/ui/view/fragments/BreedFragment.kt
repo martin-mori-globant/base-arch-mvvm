@@ -1,4 +1,4 @@
-package com.example.basemvvmexample.ui.view.main
+package com.example.basemvvmexample.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -18,12 +18,13 @@ import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.api.response.Status
 import com.example.basemvvmexample.data.local.DogsRoomDatabase
 import com.example.basemvvmexample.databinding.BreedFragmentBinding
-import com.example.basemvvmexample.ui.BreedRecyclerViewAdapter
+import com.example.basemvvmexample.ui.adapters.BreedRecyclerViewAdapter
 import com.example.basemvvmexample.ui.viewmodel.BreedViewModel
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_button
 import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_recycler_view
 import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_search
+import kotlinx.android.synthetic.main.breed_fragment.progressBar
 import retrofit2.Response
 
 class BreedFragment : Fragment() {
@@ -93,15 +94,28 @@ class BreedFragment : Fragment() {
                         list?.let {
                             breedFragmentBinding.breedViewModel?.saveOnDatabase(list)
                         }
+                        hideLoading()
                     }
                     Status.ERROR -> {
                         // Do something if error
                     }
                     Status.LOADING -> {
-                        // Do something if loading
+                        showLoading()
                     }
                 }
             }
         }
+    }
+
+    private fun showLoading() {
+        progressBar.visibility = View.VISIBLE
+        breed_fragment_recycler_view.visibility = View.INVISIBLE
+        breed_fragment_button.visibility = View.INVISIBLE
+    }
+
+    private fun hideLoading() {
+        progressBar.visibility = View.INVISIBLE
+        breed_fragment_recycler_view.visibility = View.VISIBLE
+        breed_fragment_button.visibility = View.VISIBLE
     }
 }

@@ -1,4 +1,4 @@
-package com.example.basemvvmexample.ui.view.main
+package com.example.basemvvmexample.ui.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basemvvmexample.R
-import com.example.basemvvmexample.ui.DogGalleryRecyclerViewAdapter
+import com.example.basemvvmexample.ui.adapters.DogGalleryRecyclerViewAdapter
 import com.example.basemvvmexample.ui.viewmodel.DogGalleryViewModel
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.dog_gallery_fragment.dog_gallery_fragment_breed

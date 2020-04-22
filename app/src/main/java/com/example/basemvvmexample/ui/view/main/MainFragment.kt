@@ -12,7 +12,7 @@ import com.example.basemvvmexample.data.api.response.DogImageResponse
 import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.api.response.Status
 import com.example.basemvvmexample.databinding.MainFragmentBinding
-import com.example.basemvvmexample.ui.viewmodel.MainViewModel
+import com.example.basemvvmexample.ui.viewmodel.main.MainViewModel
 import retrofit2.Response
 
 class MainFragment : Fragment() {
