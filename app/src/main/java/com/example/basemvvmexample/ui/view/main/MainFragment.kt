@@ -6,26 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.basemvvmexample.data.api.ApiHelper
-import com.example.basemvvmexample.data.api.RetrofitFactory
 import com.example.basemvvmexample.data.model.DogImage
 import com.example.basemvvmexample.data.model.Resource
 import com.example.basemvvmexample.data.model.Status
 import com.example.basemvvmexample.databinding.MainFragmentBinding
 import com.example.basemvvmexample.ui.viewmodel.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Response
 
 class MainFragment : Fragment() {
 
     private lateinit var mainFragmentBinding: MainFragmentBinding
     private lateinit var getDogImageObserver: Observer<Resource<Response<DogImage>>>
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-
-        val factory = MainViewModel.Factory(ApiHelper(RetrofitFactory.getApiService()))
         mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false).apply {
-            mainViewModel = ViewModelProvider(this@MainFragment, factory).get(MainViewModel::class.java)
+            mainViewModel = this@MainFragment.mainViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 

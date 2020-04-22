@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.basemvvmexample.R
@@ -15,22 +13,20 @@ import com.example.basemvvmexample.ui.adapter.BreedRecyclerViewAdapter
 import com.example.basemvvmexample.ui.viewmodel.BreedViewModel
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_recycler_view
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class BreedFragment : Fragment() {
 
-    private lateinit var viewModel: BreedViewModel
-    private lateinit var sharedViewModel: SharedViewModel
+    private val viewModel by viewModel<BreedViewModel>()
+    private val sharedViewModel by sharedViewModel<SharedViewModel>()
+    private lateinit var binding: BreedFragmentBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val binding: BreedFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.breed_fragment, container, false)
-        binding.handler = this
+        binding = BreedFragmentBinding.inflate(inflater, container, false).apply {
+            holder = this@BreedFragment
+        }
         return binding.root
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(BreedViewModel::class.java)
-        sharedViewModel = activity?.let { ViewModelProviders.of(it).get(SharedViewModel::class.java) }!!
     }
 
     override fun onStart() {
@@ -39,10 +35,9 @@ class BreedFragment : Fragment() {
     }
 
     private fun initRecyclerView() {
-        val recyclerViewAdapter = BreedRecyclerViewAdapter(
+        breed_fragment_recycler_view.adapter = BreedRecyclerViewAdapter(
                 listOf(getString(R.string.dog_1), getString(R.string.dog_2), getString(R.string.dog_3)),
                 sharedViewModel)
-        breed_fragment_recycler_view.adapter = recyclerViewAdapter
         breed_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
     }
 

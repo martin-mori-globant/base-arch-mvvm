@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_dogGalleryFragment_to_breedFragment"
             app:destination="@id/breedFragment" />
+        <action
+            android:id="@+id/action_dogGalleryFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
     <fragment
         android:id="@+id/breedFragment"
@@ -32,4 +35,8 @@
             android:id="@+id/action_breedFragment_to_subBreedFragment"
             app:destination="@id/subBreedFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.basemvvmexample.ui.view.main.MainFragment"
+        android:label="MainFragment" />
 </navigation>
