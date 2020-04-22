@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/iv_dog"
-            android:layout_width="256dp"
-            android:layout_height="256dp"
+            android:layout_width="@dimen/fragment_main_image_view_size"
+            android:layout_height="@dimen/fragment_main_image_view_size"
             app:imageUrl="@{mainViewModel.dogUrl}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,6 +45,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_url" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

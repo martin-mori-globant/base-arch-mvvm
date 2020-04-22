@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fill_parent">0dp</dimen>
+    <dimen name="fragment_list_item_text_height">60dp</dimen>
+    <dimen name="fragment_list_item_img_size">100dp</dimen>
+    <dimen name="fragment_dog_gallery_list_item_img_margin">20dp</dimen>
+    <dimen name="fragment_main_image_view_size">256dp</dimen>
+</resources>

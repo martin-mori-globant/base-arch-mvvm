@@ -18,10 +18,6 @@ import retrofit2.Response
 
 class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private lateinit var mainFragmentBinding: MainFragmentBinding
     private lateinit var getDogImageObserver: Observer<Resource<Response<DogImage>>>
 
@@ -43,18 +39,16 @@ class MainFragment : Fragment() {
         initializeUI()
 
         mainFragmentBinding.btnNext.setOnClickListener {
-            mainFragmentBinding.mainViewModel?.getDogImage()
-                    ?.observe(viewLifecycleOwner, getDogImageObserver)
+            mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageObserver)
         }
     }
 
     private fun initializeUI() {
-        mainFragmentBinding.mainViewModel?.getDogImage()
-                ?.observe(viewLifecycleOwner, getDogImageObserver)
+        mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageObserver)
     }
 
     private fun setUpObservers() {
-        getDogImageObserver = Observer<Resource<Response<DogImage>>> {
+        getDogImageObserver = Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
