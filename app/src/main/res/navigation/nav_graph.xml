@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/subBreedFragment"
-        android:name="com.example.basemvvmexample.ui.view.fragments.SubBreedFragment"
+        android:name="com.example.basemvvmexample.ui.view.main.fragment.SubBreedFragment"
         android:label="sub_breed_fragment"
         tools:layout="@layout/sub_breed_fragment" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/dogGalleryFragment"
-        android:name="com.example.basemvvmexample.ui.view.fragments.DogGalleryFragment"
+        android:name="com.example.basemvvmexample.ui.view.main.fragment.DogGalleryFragment"
         android:label="dog_gallery_fragment"
         tools:layout="@layout/dog_gallery_fragment" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/breedFragment"
-        android:name="com.example.basemvvmexample.ui.view.fragments.BreedFragment"
+        android:name="com.example.basemvvmexample.ui.view.main.fragment.BreedFragment"
         android:label="breed_fragment"
         tools:layout="@layout/breed_fragment" >
         <action

@@ -5,10 +5,8 @@ import androidx.lifecycle.ViewModel
 
 class SharedViewModel : ViewModel() {
 
-    val breed = MutableLiveData<String>()
-        get() = if (field.value != null) field else MutableLiveData("EMPTY_VAL")
-    val subBreed = MutableLiveData<String>()
-        get() = if (field.value != null) field else MutableLiveData("EMPTY_VAL")
+    val breed = MutableLiveData<String>("EMPTY_VAL")
+    val subBreed = MutableLiveData<String>("EMPTY_VAL")
 
     fun breed(item: String) {
         breed.value = item

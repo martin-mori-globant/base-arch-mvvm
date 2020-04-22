@@ -1,20 +1,21 @@
-package com.example.basemvvmexample.ui.adapters
+package com.example.basemvvmexample.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basemvvmexample.R
+import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 
-class DogGalleryRecyclerViewAdapter(
+class SubBreedRecyclerViewAdapter(
     private val list: List<String>,
     private val viewModel: ViewModel
-) : RecyclerView.Adapter<DogGalleryRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SubBreedRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.dog_gallery_fragment_list_item, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.sub_breed_fragment_list_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -23,10 +24,11 @@ class DogGalleryRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imageView
+        holder.textView.text = list[position]
+        holder.textView.setOnClickListener { (viewModel as SharedViewModel).subBreed(list[position]) }
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView = itemView.findViewById(R.id.dog_gallery_fragment_list_item_img)
+        var textView: TextView = itemView.findViewById(R.id.sub_breed_fragment_list_item_text)
     }
 }

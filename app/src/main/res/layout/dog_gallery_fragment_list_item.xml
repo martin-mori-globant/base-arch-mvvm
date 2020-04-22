@@ -6,9 +6,9 @@
 
     <ImageView
         android:id="@+id/dog_gallery_fragment_list_item_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="20dp"
+        android:layout_width="@dimen/fragment_list_item_img_size"
+        android:layout_height="@dimen/fragment_list_item_img_size"
+        android:layout_margin="@dimen/fragment_dog_gallery_list_item_img_margin"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

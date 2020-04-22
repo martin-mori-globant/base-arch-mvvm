@@ -18,7 +18,7 @@ import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.api.response.Status
 import com.example.basemvvmexample.data.local.DogsRoomDatabase
 import com.example.basemvvmexample.databinding.BreedFragmentBinding
-import com.example.basemvvmexample.ui.adapters.BreedRecyclerViewAdapter
+import com.example.basemvvmexample.ui.adapter.BreedRecyclerViewAdapter
 import com.example.basemvvmexample.ui.viewmodel.BreedViewModel
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_button
@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_search
 import kotlinx.android.synthetic.main.breed_fragment.progressBar
 import retrofit2.Response
 
-class BreedFragment : Fragment() {
+class BreedFragmentLUCHO : Fragment() {
 
     // private lateinit var viewModel: BreedViewModel
     private lateinit var sharedViewModel: SharedViewModel
@@ -40,7 +40,7 @@ class BreedFragment : Fragment() {
 
         val factory = BreedViewModel.Factory(ApiHelper(RetrofitFactory.getApiService()), DogsRoomDatabase.getDatabase(activity!!.applicationContext).breedDao())
         breedFragmentBinding = BreedFragmentBinding.inflate(inflater, container, false).apply {
-            breedViewModel = ViewModelProvider(this@BreedFragment, factory).get(BreedViewModel::class.java)
+            breedViewModel = ViewModelProvider(this@BreedFragmentLUCHO, factory).get(BreedViewModel::class.java)
             lifecycleOwner = viewLifecycleOwner
         }
 

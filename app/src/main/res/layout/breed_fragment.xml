@@ -3,16 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="breedViewModel"
+            type="com.example.basemvvmexample.ui.viewmodel.BreedViewModel" />
+
+        <variable
+            name="handler"
+            type="com.example.basemvvmexample.ui.view.main.fragment.BreedFragment" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.view.fragments.BreedFragment">
+        tools:context=".ui.view.main.fragment.BreedFragment">
 
         <Button
             android:id="@+id/breed_fragment_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="to SubBreeds"
+            android:onClick="@{() -> handler.execAction()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,18 +65,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/breed_fragment_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="@dimen/fill_parent"
             app:layout_constraintBottom_toTopOf="@+id/breed_fragment_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <data>
-
-        <variable
-            name="breedViewModel"
-            type="com.example.basemvvmexample.ui.viewmodel.BreedViewModel" />
-    </data>
 </layout>
