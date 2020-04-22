@@ -9,13 +9,12 @@ import com.example.basemvvmexample.data.api.ApiHelper
 import com.example.basemvvmexample.data.api.RetrofitFactory
 import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.local.DogsRoomDatabase
-import com.example.basemvvmexample.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : BaseViewModel() {
 
-    private val mainRepository: MainRepository
+    // private val mainRepository: MainRepository
     private var _dogUrl = MutableLiveData("dog")
     val dogUrl: LiveData<String> = _dogUrl
 
@@ -26,22 +25,26 @@ class MainViewModel(application: Application) : BaseViewModel() {
         val breedDao = DogsRoomDatabase.getDatabase(application).breedDao()
         val apiHelper = ApiHelper(RetrofitFactory.getApiService())
         // mainRepository = MainRepository(apiHelper, breedDao)
-        mainRepository = MainRepository(apiHelper)
+        // mainRepository = MainRepository(apiHelper)
     }
 
     fun getDogImage() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
+        /*
         try {
-            val dogImageResponse = mainRepository.getDogImage()
+            //val dogImageResponse = mainRepository.getDogImage()
             _dogUrl.postValue(dogImageResponse.body()?.message)
             emit(Resource.success(data = dogImageResponse))
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
+
+         */
     }
 
     fun getDogBreeds() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
+        /*
         try {
             val dogBreedsResponse = mainRepository.getDogBreeds()
             _dogBreeds.postValue(dogBreedsResponse.body()?.message)
@@ -49,6 +52,8 @@ class MainViewModel(application: Application) : BaseViewModel() {
         } catch (exception: Exception) {
             emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
         }
+
+         */
     }
 
     fun saveThatShit(list: List<String>?) {

@@ -33,6 +33,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/breed_fragment_button" />
 
+        <Button
+            android:id="@+id/breed_fragment_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="load"
+            android:onClick="@{()->breedViewModel.loadOnDataBase()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/breed_fragment_delete"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/breed_fragment_search" />
+
+        <Button
+            android:id="@+id/breed_fragment_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="@{()->breedViewModel.deleteLocal()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/breed_fragment_load"
+            app:layout_constraintTop_toBottomOf="@+id/breed_fragment_search" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/breed_fragment_recycler_view"
             android:layout_width="match_parent"

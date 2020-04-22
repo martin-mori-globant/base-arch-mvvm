@@ -10,7 +10,7 @@ import androidx.room.Query
 interface BreedDao {
 
     @Query("SELECT * from breed_table ORDER BY breed ASC")
-    fun getBreedsAlhabeticOrder(): LiveData<List<BreedRoom>>
+    fun getBreedsAlphabeticOrder(): LiveData<List<BreedRoom>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertAll(breeds: List<BreedRoom>)

@@ -7,10 +7,11 @@ import android.widget.TextView
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.example.basemvvmexample.R
+import com.example.basemvvmexample.data.local.BreedRoom
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
 
 class BreedRecyclerViewAdapter(
-    private val list: List<String>,
+    private var list: List<BreedRoom>,
     private val viewModel: ViewModel
 ) : RecyclerView.Adapter<BreedRecyclerViewAdapter.ViewHolder>() {
 
@@ -24,8 +25,13 @@ class BreedRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = list[position]
-        holder.textView.setOnClickListener { (viewModel as SharedViewModel).breed(list[position]) }
+        holder.textView.text = list[position].breed
+        holder.textView.setOnClickListener { (viewModel as SharedViewModel).breed(list[position].breed) }
+    }
+
+    internal fun setWords(breeds: List<BreedRoom>) {
+        this.list = breeds
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
