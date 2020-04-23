@@ -16,10 +16,6 @@ import com.example.basemvvmexample.databinding.BreedFragmentBinding
 import com.example.basemvvmexample.ui.adapter.BreedRecyclerViewAdapter
 import com.example.basemvvmexample.ui.viewmodel.BreedViewModel
 import com.example.basemvvmexample.ui.viewmodel.SharedViewModel
-import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_button
-import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_recycler_view
-import kotlinx.android.synthetic.main.breed_fragment.breed_fragment_search
-import kotlinx.android.synthetic.main.breed_fragment.progressBar
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Response
@@ -44,15 +40,17 @@ class BreedFragment : Fragment() {
         super.onStart()
         initRecyclerView()
         setUpObservers()
-        breed_fragment_search.setOnClickListener {
+        binding.breedFragmentSearch.setOnClickListener {
             binding.breedViewModel?.getDogBreedsFromRepo()?.observe(viewLifecycleOwner, getDogBreedsObserverResponse)
         }
     }
 
     private fun initRecyclerView() {
         val recyclerViewAdapter = BreedRecyclerViewAdapter(emptyList(), sharedViewModel)
-        breed_fragment_recycler_view.adapter = recyclerViewAdapter
-        breed_fragment_recycler_view.layoutManager = LinearLayoutManager(context)
+        binding.breedFragmentRecyclerView.apply {
+            adapter = recyclerViewAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
         binding.breedViewModel?.dogBreedsLiveData?.observe(viewLifecycleOwner, Observer { breeds ->
             breeds?.let { recyclerViewAdapter.setWords(breeds) }
         })
@@ -77,15 +75,15 @@ class BreedFragment : Fragment() {
     }
 
     private fun showLoading() {
-        progressBar.visibility = View.VISIBLE
-        breed_fragment_recycler_view.visibility = View.INVISIBLE
-        breed_fragment_button.visibility = View.INVISIBLE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.breedFragmentRecyclerView.visibility = View.INVISIBLE
+        binding.breedFragmentButton.visibility = View.INVISIBLE
     }
 
     private fun hideLoading() {
-        progressBar.visibility = View.INVISIBLE
-        breed_fragment_recycler_view.visibility = View.VISIBLE
-        breed_fragment_button.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.breedFragmentRecyclerView.visibility = View.VISIBLE
+        binding.breedFragmentButton.visibility = View.VISIBLE
     }
 
     fun execAction() = NavHostFragment.findNavController(this).navigate(R.id.action_breedFragment_to_subBreedFragment)
