@@ -2,13 +2,9 @@ package com.example.basemvvmexample.ui.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.basemvvmexample.data.api.ApiHelper
 import com.example.basemvvmexample.data.api.response.Resource
-import com.example.basemvvmexample.data.local.BreedDao
 import com.example.basemvvmexample.data.local.BreedRoom
 import com.example.basemvvmexample.data.repository.MainRepository
 import kotlinx.coroutines.Dispatchers
@@ -47,16 +43,6 @@ class BreedViewModel(private val mainRepository: MainRepository) : BaseViewModel
     fun deleteLocal() {
         viewModelScope.launch(Dispatchers.IO) {
             mainRepository.deleteLocal()
-        }
-    }
-
-    class Factory(private val apiHelper: ApiHelper, private val breedDao: BreedDao) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(BreedViewModel::class.java)) {
-                return BreedViewModel(MainRepository(apiHelper, breedDao)) as T
-            }
-            throw IllegalArgumentException("Unknown class name")
         }
     }
 }

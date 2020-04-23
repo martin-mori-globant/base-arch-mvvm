@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.example.basemvvmexample.data.api.response.DogImageResponse
 import com.example.basemvvmexample.data.api.response.Resource
 import com.example.basemvvmexample.data.api.response.Status
 import com.example.basemvvmexample.databinding.MainFragmentBinding
@@ -16,7 +17,7 @@ import retrofit2.Response
 class MainFragment : Fragment() {
 
     private lateinit var mainFragmentBinding: MainFragmentBinding
-    private lateinit var getDogImageObserver: Observer<Resource<Response<DogImage>>>
+    private lateinit var getDogImageObserver: Observer<Resource<Response<DogImageResponse>>>
     private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -48,13 +49,13 @@ class MainFragment : Fragment() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        //Do something if success
+                        // Do something if success
                     }
                     Status.ERROR -> {
-                        //Do something if error
+                        // Do something if error
                     }
                     Status.LOADING -> {
-                        //Do something if loading
+                        // Do something if loading
                     }
                 }
             }

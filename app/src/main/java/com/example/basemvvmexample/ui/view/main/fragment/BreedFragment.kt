@@ -40,9 +40,8 @@ class BreedFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    override fun onStart() {
+        super.onStart()
         initRecyclerView()
         setUpObservers()
         breed_fragment_search.setOnClickListener {
