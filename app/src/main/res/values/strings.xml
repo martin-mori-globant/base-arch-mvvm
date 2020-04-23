@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">BaseMVVMKotlinExample</string>
     <string name="button_next">next</string>
+    <string name="sub_dog_1">sub_dog_1</string>
+    <string name="sub_dog_2">sub_dog_2</string>
+    <string name="sub_dog_3">sub_dog_3</string>
+    <string name="dog_1">dog_1</string>
+    <string name="dog_2">dog_2</string>
+    <string name="dog_3">dog_3</string>
+    <string name="img_dog_1">img_dog_1</string>
+    <string name="img_dog_2">img_dog_2</string>
+    <string name="img_dog_3">img_dog_3</string>
+    <string name="button">Button</string>
+    <string name="text">TextView</string>
+    <string name="breed">Breed</string>
+    <string name="sub_breed">Sub_Breed</string>
 </resources>

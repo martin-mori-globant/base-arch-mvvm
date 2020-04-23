@@ -6,34 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import com.example.basemvvmexample.data.api.ApiHelper
-import com.example.basemvvmexample.data.api.RetrofitFactory
-import com.example.basemvvmexample.data.model.DogImage
-import com.example.basemvvmexample.data.model.Resource
-import com.example.basemvvmexample.data.model.Status
+import com.example.basemvvmexample.data.api.response.DogImageResponse
+import com.example.basemvvmexample.data.api.response.Resource
+import com.example.basemvvmexample.data.api.response.Status
 import com.example.basemvvmexample.databinding.MainFragmentBinding
-import com.example.basemvvmexample.ui.viewmodel.MainViewModel
+import com.example.basemvvmexample.ui.viewmodel.main.MainViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import retrofit2.Response
 
 class MainFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private lateinit var mainFragmentBinding: MainFragmentBinding
-    private lateinit var getDogImageObserver: Observer<Resource<Response<DogImage>>>
+    private lateinit var getDogImageObserver: Observer<Resource<Response<DogImageResponse>>>
+    private val mainViewModel: MainViewModel by viewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        val factory = MainViewModel.Factory(ApiHelper(RetrofitFactory.getApiService()))
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false).apply {
-            mainViewModel = ViewModelProvider(this@MainFragment, factory).get(MainViewModel::class.java)
+            mainViewModel = this@MainFragment.mainViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 
@@ -47,18 +36,16 @@ class MainFragment : Fragment() {
         initializeUI()
 
         mainFragmentBinding.btnNext.setOnClickListener {
-            mainFragmentBinding.mainViewModel?.getDogImage()
-                    ?.observe(viewLifecycleOwner, getDogImageObserver)
+            mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageObserver)
         }
     }
 
     private fun initializeUI() {
-        mainFragmentBinding.mainViewModel?.getDogImage()
-                ?.observe(viewLifecycleOwner, getDogImageObserver)
+        mainFragmentBinding.mainViewModel?.getDogImage()?.observe(viewLifecycleOwner, getDogImageObserver)
     }
 
     private fun setUpObservers() {
-        getDogImageObserver = Observer<Resource<Response<DogImage>>> {
+        getDogImageObserver = Observer {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {

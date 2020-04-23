@@ -33,6 +33,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:' + rootProject.appcompat_version
     implementation 'androidx.core:core-ktx:' + rootProject.core_ktx_version
     implementation 'androidx.constraintlayout:constraintlayout:' + rootProject.constraint_layout_version
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     testImplementation 'junit:junit:' + rootProject.junit_version
     androidTestImplementation 'androidx.test.ext:junit:' + rootProject.junit_test_version
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + rootProject.espresso_core_version
@@ -47,6 +50,7 @@ dependencies {
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:' + rootProject.retrofit_version
     implementation 'com.squareup.retrofit2:converter-moshi:' + rootProject.converter_moshi_version
+    implementation 'com.squareup.retrofit2:converter-gson:' + rootProject.retrofit_version
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:' + rootProject.coroutines_version
@@ -56,10 +60,18 @@ dependencies {
 
     // Koin
     implementation 'org.koin:koin-android:' + rootProject.koin_version
-    implementation 'org.koin:koin-android-viewmodel:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-scope:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-viewmodel:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-fragment:' + rootProject.koin_version
 
     // Room
     implementation 'androidx.room:room-runtime:' + rootProject.room_version
+    implementation 'androidx.room:room-ktx:' + rootProject.room_version
+    kapt 'androidx.room:room-compiler:' + rootProject.room_version
+
+    //Navigation
+    implementation 'androidx.navigation:navigation-fragment-ktx:' + rootProject.navigation_version
+    implementation 'androidx.navigation:navigation-ui-ktx:' + rootProject.navigation_version
 }
 
 apply from: '../buildsystem/lint.gradle'

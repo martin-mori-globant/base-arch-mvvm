@@ -1,4 +1,4 @@
-package com.example.basemvvmexample.data.model
+package com.example.basemvvmexample.data.api.response
 
 enum class Status {
     SUCCESS,
