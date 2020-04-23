@@ -10,7 +10,7 @@
             type="com.example.basemvvmexample.ui.viewmodel.BreedViewModel" />
 
         <variable
-            name="handler"
+            name="holder"
             type="com.example.basemvvmexample.ui.view.main.fragment.BreedFragment" />
     </data>
 
@@ -23,8 +23,8 @@
             android:id="@+id/breed_fragment_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="to SubBreeds"
-            android:onClick="@{() -> handler.execAction()}"
+            android:onClick="@{() -> holder.execAction()}"
+            android:text="@string/button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

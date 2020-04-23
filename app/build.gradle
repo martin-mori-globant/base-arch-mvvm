@@ -60,7 +60,9 @@ dependencies {
 
     // Koin
     implementation 'org.koin:koin-android:' + rootProject.koin_version
-    implementation 'org.koin:koin-android-viewmodel:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-scope:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-viewmodel:' + rootProject.koin_version
+    implementation 'org.koin:koin-androidx-fragment:' + rootProject.koin_version
 
     // Room
     implementation 'androidx.room:room-runtime:' + rootProject.room_version

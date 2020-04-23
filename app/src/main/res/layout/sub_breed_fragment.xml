@@ -6,11 +6,11 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.basemvvmexample.ui.viewmodel.SubBreedViewModel" />
+            name="breed"
+            type="String" />
 
         <variable
-            name="handler"
+            name="holder"
             type="com.example.basemvvmexample.ui.view.main.fragment.SubBreedFragment" />
     </data>
 
@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="@dimen/fragment_list_item_text_height"
             android:gravity="center"
-            android:text="@string/text"
+            android:text="@{breed}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:id="@+id/sub_breed_fragment_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> handler.execAction()}"
+            android:onClick="@{() -> holder.execAction()}"
             android:text="@string/button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -6,11 +6,15 @@
     <data>
 
         <variable
-            name="viewModel"
-            type="com.example.basemvvmexample.ui.viewmodel.DogGalleryViewModel" />
+            name="breed"
+            type="String" />
 
         <variable
-            name="handler"
+            name="subBreed"
+            type="String" />
+
+        <variable
+            name="holder"
             type="com.example.basemvvmexample.ui.view.main.fragment.DogGalleryFragment" />
     </data>
 
@@ -24,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/breed"
+            android:text="@{breed}"
             app:layout_constraintBottom_toTopOf="@id/dog_gallery_fragment_sub_breed"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/sub_breed"
+            android:text="@{subBreed}"
             app:layout_constraintBottom_toTopOf="@id/dog_gallery_fragment_button"
             app:layout_constraintTop_toBottomOf="@id/dog_gallery_fragment_breed" />
 
@@ -48,7 +52,7 @@
             android:id="@+id/dog_gallery_fragment_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> handler.execAction()}"
+            android:onClick="@{() -> holder.execAction()}"
             android:text="@string/button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
